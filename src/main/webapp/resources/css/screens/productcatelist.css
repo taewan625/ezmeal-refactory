@@ -1,0 +1,367 @@
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+body {
+    font-family: 'NanumSquare', sans-serif;
+    word-break: keep-all;   /*브라우저가 단어를 분리하지 않고 한 줄에 유지*/
+    overflow-wrap: break-word;   /* 텍스트가 주어진 컨테이너의 너비를 초과할 경우 단어를 분리하여 줄을 바꾸는 방식을 지정하는 데 사용*/
+    letter-spacing: -0.5px;
+}
+* {
+    font-family: 'NanumSquare', sans-serif;
+    caret-color: transparent;
+}
+/** {*/
+/*    font-family: 'Black Han Sans', sans-serif;*/
+/*    font-family: 'Nanum Gothic', sans-serif;*/
+/*}*/
+
+.empty_top {
+    height: 30px !important;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.지붕묶음 {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin-left: 77%;
+    margin-right: 27%;
+    height: 20px;
+
+}
+
+
+.지붕 {
+    list-style-type: none;
+    margin: 0;
+    padding-right: 20px;
+    display: flex;
+    /*     justify-content: center;
+        align-items: center; */
+    position: relative;
+}
+
+
+
+/*상품 4개가 1 UL*/
+.prod_list_ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style-type: none;
+    padding-left:0;
+}
+
+/*상품 1개가 1 LI*/
+.prod_list_li {
+    box-sizing: border-box; /* 요소의 경계 상자 크기 설정을 위해 추가 */
+    padding: 0px; /* 각 항목의 패딩 설정 */
+    margin: 0px;
+    border: 0px #000;
+    margin-bottom: 0;
+    margin-top: 0;
+    list-style-type: none;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.prod_outer{
+    /* background-color:blueviolet; */
+    width: 245px;
+    height: 480px;
+    border: 0px #000;
+}
+
+/*상단 이미지 감싸는 figure*/
+.top_figure {
+    border: 0px solid #000;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+/*상품 이미지*/
+.prod_top img {
+    width: 250px;
+    height: 320px;
+    object-fit: contain;
+    margin: 2%;
+    border-radius: 0;
+    object-fit: cover;
+}
+
+/*보관방법*/
+.iceTyp {
+    position: absolute;
+    bottom: 15px;
+    left: 20px;
+    width: 15px;
+    height: 15px;
+    display: flex; /* Flexbox를 사용합니다 */
+    align-items: center; /* 세로 가운데 정렬 */
+    justify-content: center; /* 가로 가운데 정렬 */
+    background-color: white; /* 배경색 */
+    border-radius: 50%; /* 동그랗게 만들기 위한 설정 */
+    padding: 6px; /* 아이콘과 배경 사이의 공간 */
+    opacity: 0.8;
+}
+
+.iceTyp i {
+    color: #75c5ff; /* 아이콘 색상 */
+}
+/*-----------------------------------------------------*/
+
+/*이미지 아래부분 전체*/
+.prod_bottom{
+    width: 245px;
+    height: 190px;   /* 옵션있어서*/
+    /* background-color:gainsboro; */
+    border: 2px solid #0000;
+}
+
+.review_set {
+    text-align: right;
+    margin-top : 0px;
+    margin-right: 5px;
+    margin-bottom : 5px;
+}
+
+.star_img {
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    background-image: url("../../img/star.png");
+    background-size: 100%;
+    background-repeat: no-repeat; /*그림 반복 막기*/
+}
+
+.star_img, .score, .total_num {
+    vertical-align: middle;   /*옆 스팬글자랑 이미지랑 높이 맞추기*/
+}
+
+.total_num {
+    margin-right: 5px;
+}
+
+/*------------------------------------*/
+
+.in_middle {
+    height: 55px;
+    margin-top: -10px;
+
+}
+
+.prod_title  {
+    padding: 0%;
+    display: block;
+    margin-top: 13px;
+    margin-bottom: 7px;
+    margin-left: 0px;
+    margin-right: 5px;
+    word-break: break-word;
+}
+
+.prod_name {
+    font-size: 16px;
+    margin-left: 12px;
+    word-break: break-word;
+}
+
+.dc_cd {
+    color: rgb(0, 199, 40);
+    display: inline-block;
+    font-weight: bold;
+    padding-left:12px;
+    margin-bottom: 1%;
+    margin-right: -8px;
+
+}
+
+.dc_cd > strong{
+    font-weight: 900;
+}
+
+
+div.in_middle > a {
+    height: 70px;
+}
+
+
+span.sale_prc {
+    display: inline-block;
+    color: black;
+    margin-left: 12px;
+    margin-right: 5px;
+    font-size: 120%;
+    font-weight: bold; /* 굵은 글꼴 설정 */
+    width: 180px;
+    font-style: normal;
+}
+
+
+.cnsmr_prc {
+    color: #cac6c6;
+    text-decoration: line-through;
+    margin-top: 2px;
+    display: inline-block;
+    font-size: 80%;
+    margin-bottom: 10px;
+}
+
+.sale_prc > strong{
+    font-weight: 900;
+}
+
+
+
+.dc_cd_prod_dscpt_wrapper {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.dc_cd,  .sale_prc,  .cnsmr_prc {
+    width:min-content;
+    margin-bottom: 2px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+
+
+/*-------------------------------------------------------------------상품출력 끝--------------------*/
+
+/*.add_cart {*/
+/*    !* border: 1px solid #000; *!*/
+/*    margin-top: 10px;*/
+/*    margin-left: 10px;*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*    justify-content: left;*/
+/*}*/
+
+.button_wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: -7px;
+}
+
+.qty {
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 23px;
+    width: 17px;
+    background-color: transparent;
+    font-size: 100%;
+    text-align: center;
+}
+
+#qty_7 {
+    width: 60px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.min_btn {
+    margin-left: 15px;
+}
+
+.min_btn,
+.pls_btn {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: white;
+    font-size: 110%;
+    cursor: pointer;
+    border: 1px solid gainsboro;
+    display: inline-block;
+    color: black;
+
+}
+
+
+.submit_btn{
+    width : 39px;
+    height : 35px;
+    margin-right: 20px;
+    margin-left: 0px;
+    margin-bottom: 3px;
+    border: 1px solid gray;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.wishlist_btn {
+    width : 35px;
+    height : 35px;
+    margin-left: 50px;
+    margin-right: 5px;
+    margin-bottom: 1px;
+    border: 1px solid gray;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+.fas {
+    font-size: 16px; /* 아이콘 크기 조정 */
+    color: rgb(0, 199, 40);
+
+}
+
+.far {
+    font-size: 18px; /* 아이콘 크기 조정 */
+    color: #2c94de ;
+}
+
+/*-----------------------------------*/
+.select_box {
+    margin-top: 7px;
+    margin-left: 10px;
+    width: 90px;
+    height: 20px;
+    border: 1px solid #d3d3d3;
+    color: #228dd0;
+}
+
+.hidden_option  option  {
+    color: #6c6c6c;
+    background-color: #ffffff;
+}
+
+/*-------------상품 정렬 키워드 속성------------*/
+a {
+    text-decoration: none;  /* 밑줄 제거 */
+    color: inherit;  /* 부모 요소의 색상 상속 */
+}
+
+a:hover,
+a:focus {
+    color: inherit;  /* 부모 요소의 색상 상속 */
+}
+
+/*------------찜하기 호버-----------*/
+.wishlist_btn .fa-heart {
+    color: #ffdcd8; /* 기본 색상 */
+}
+
+.wishlist_btn.hover .fa-heart {
+    color: #ff9284; /* 호버 상태 색상 */
+}
+
+.submit_btn.hover .fa-shopping-cart {
+    color: #0f5739 /* 호버 상태 색상 */
+}
+
+
+

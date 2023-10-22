@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="orderDetailDao">
+    <insert id="insertOrderDetail" parameterType="map">
+        INSERT INTO tb_order_detail (
+        ord_prod_dtl_id, prod_cd, ord_id, opt_cd, name,
+        cnsmr_prc, seler_prc, qty, tot_prc, dc_prc, setl_expct_prc, stus)
+        VALUES
+        <foreach collection="list" item="orderDetail" index="index" separator=",">
+            (CONCAT(#{orderDetail.ord_id}, LPAD(${index+1}, 2, '0')), #{orderDetail.prod_cd}, #{orderDetail.ord_id},
+            #{orderDetail.opt_cd},
+            #{orderDetail.name},
+            #{orderDetail.cnsmr_prc}, #{orderDetail.seler_prc}, #{orderDetail.qty}, #{orderDetail.tot_prc},
+            #{orderDetail.dc_prc},
+            #{orderDetail.setl_expct_prc}, #{orderDetail.stus})
+        </foreach>
+    </insert>
+
+    <!-- 반복되는 주문 상세 가지고 오기 -->
+    <select id="select_order_detail" resultType="OrderDetailDto">
+        select od.ord_prod_dtl_id,
+               od.ord_id,
+               od.prod_cd,
+               pi.url,
+               od.name,
+               od.review_yn,
+               format(od.setl_expct_prc, 0) as setl_expct_prc_format,
+               format(od.tot_prc, 0)        as tot_prc_format,
+               od.qty,
+               osc.name                     as stus,
+               osc.ord_prod_stus_cd
+        from tb_order_detail as od,
+             tb_order_status_code as osc,
+             tb_product_img as pi
+        where ord_id = #{ordId}
+          and od.stus = osc.ord_prod_stus_cd
+          and od.prod_cd = pi.prod_cd
+          and pi.typ = '대표'
+    </select>
+
+    <!-- 주문 상세에 사용할 복합 정보 가지고 오기 : 결제 master, member master, delivery master-->
+    <select id="select_outside_order_detail_info" resultType="map">
+        select format(pm.ord_tot_prc, 0)                      as ord_tot_prc, # 상품주문총금액
+               format(pm.tot_dc_prc, 0)                       as tot_dc_prc,  # 상품 총 할인 금액
+               pm.use_pnt,                                                    # 사용적립금
+               pm.coupn_use_prc,                                              # 쿠폰사용금액
+               pm.dexp,                                                       # 배송비
+               pm.pay_mtd,                                                    # 결제수단
+               format(pm.pay_prc, 0)                          AS pay_prc,     # 실결제 금액
+               date_format(pm.in_dtm, '%Y-%m-%d %H:%i:%s')    as pay_dtm,     # 결제 시간
+               m.name,                                                        # 주문자 이름
+               dm.rcpr,                                                       # 수령자
+               concat(substring(dm.rcpr_phone, 1, 9), '****') as rcpr_phone,  # 수령인전화번호
+               concat(dm.desti, ' ', dm.desti_dtl)            as sum_desti,   # 배송도착지 + 배송상세도착지
+               dm.req_mtr,                                                    # 배송요청사항: 문앞, 경비실
+               dm.in_mtd,                                                     # 출입방법: 공동현관 - 비밀번호, 자유 출입, 기타
+               dm.box_size                                                    # 배송 박스 사이즈
+               # todo : 배송 조회 관련 정보를 여기서 받아올 수 있고 아니면 따로 배송 masterMapper 에서 받아올 수 있다.
+        from tb_payment_master pm,
+             tb_delivery_master dm,
+             tb_member m
+        where pm.ord_id = dm.ord_id
+          and pm.mbr_id = m.mbr_id
+          and pm.ord_id = #{ordId}
+        limit 1
+# TODO. 일단은 limit으로 중복 값 나오는 문제 잡았지만 주문상세번호,송장번호,상태,묶음선택을 가지는 table을 따로 빼야하는지 고민해볼 필요가 있다.
+    </select>
+
+    <!-- 주문번호로 주문상세 pk 받아오기 -->
+    <select id="select_order_detail_pk" resultType="Long">
+        select ord_prod_dtl_id
+        from tb_order_detail
+        where ord_id = #{ordId}
+    </select>
+
+    <!-- 주문상세 page에서 구매확정으로 변경 시, od - stus update -->
+    <update id="update_order_fixed">
+        update tb_order_detail od
+        set od.stus   = 'a3',
+            od.up_dtm = now()
+        where od.ord_prod_dtl_id = #{ordDtlId}
+    </update>
+
+    <!-- 주문상세 page에서 리뷰작성 시, review_yn update -->
+    <update id="update_order_review">
+        update tb_order_detail od
+        set od.review_yn = 'y'
+        where od.ord_prod_dtl_id = #{ordDtlId}
+    </update>
+</mapper>

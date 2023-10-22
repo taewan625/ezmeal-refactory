@@ -1,0 +1,86 @@
+.notice-board {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+.notice-board-inner {
+    width: 100%;
+    padding: 50px 0px;
+}
+
+.notice-title {
+    font-weight: 900;
+    font-size: 35px;
+    color: #333;
+    letter-spacing: 1px;
+    line-height: 48px;
+    text-align: center;
+    padding-bottom:10px
+}
+
+.notice-title-explain {
+    padding-left: 11px;
+    font-size: 20px;
+    letter-spacing: -0.3px;
+    color: #999;
+    line-height: 20px;
+    text-align: center;
+}
+
+.notice-board-title {
+    width: 150px;
+    padding: 13px 10px 13px 10px;
+    background-color: rgb(246, 250, 246);
+    border-top: 1px solid rgb(244, 244, 244);
+    text-align: center;
+    font-weight: 600;
+    color: black;
+    font-size: 16px;
+}
+
+.notice-board-explain {
+    width:700px;
+    padding-left: 25px;
+    align-self: center;
+    max-width: 700px;
+    word-wrap: break-word;
+}
+
+.notice-table {
+    padding: 30px 10px 100px;
+    border-bottom: 1px solid rgb(128, 128, 128);
+}
+
+.notice-board-listbtn {
+    display: flex;
+    width: 100%;
+    padding: 20px 0px;
+    justify-content: flex-end;
+}
+
+.board-listbtn {
+    display: flex;
+    padding: 0px 10px;
+    text-align: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 150px;
+    height: 42px;
+    border-radius: 0px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(48, 209, 75);
+    border: 0px none;
+
+}
+
+.board-listbtn-title {
+    display: flex; /* Flex 컨테이너로 설정 */
+    justify-content: center; /* 가로 정렬을 중앙으로 설정 */
+    align-items: center; /* 세로 정렬을 중앙으로 설정 */
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.notice-board-explain img {
+    width:600px;
+}

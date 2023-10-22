@@ -1,0 +1,788 @@
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+
+* {
+    font-family: 'NanumSquare', sans-serif;
+    caret-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* -------------------------------  상품 상세 상단 ----------------------------------- */
+.head_main {
+    margin-top: 10px;
+    width: 1100px;
+    height: auto;
+    background-color: white;
+    border: 6px solid rgb(255 255 255);
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+}
+
+/* --------------------------------  왼쪽 상품 사진  ----------------------------------- */
+
+.head_main_left {
+    width: 45%;
+    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: flex-start;
+    justify-content: center;
+    padding-left: 15px;
+    padding-top: 10px;
+}
+
+.main_img {
+    padding: 30px;
+    width: 400px;
+    height: 500px;
+    object-fit: cover;
+    /*color: aqua;*/
+    padding-bottom: 10px;
+}
+
+
+.mini_img_set{
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+
+}
+.mini_img {
+    width: 70px;
+    height: 70px;
+    margin: 5px;
+}
+
+/* -------------------  오른쪽 상품 정보 (공통)   -------------------------- */
+
+.head_main_right {
+    width: 55%;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.prod_name_div,
+.prod_price_set,
+.review_set,
+.prod_info_set,
+.proc_oeder_set {
+    margin-bottom: 10px;
+}
+
+.info_table {
+    width: auto;
+    border-collapse: collapse;
+}
+
+.info_table th,
+.info_table td {
+    border-bottom: 1px solid #c6e2cd; /* 아래쪽 구분선 설정 */
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.info_table th {
+    width: 80px;
+    padding-right: 10px;
+}
+
+.info_table td {
+    width: 430px;
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
+/*------------------------오른쪽 상세 (개별 속성 지정)------------------------*/
+
+p.prod_name {
+    font-size: 180%;
+    margin-top: 50px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+
+}
+
+p.prod_name> strong {
+    font-weight: 900;
+}
+
+
+div.review_set {
+    font-size: 110%;
+    margin-bottom: 20px;
+}
+
+
+div.prod_price_set {
+    width: 550px;
+    border-bottom: 1px solid  #c6e2cd;  /* 아래쪽 구분선 설정 */
+    padding-bottom: 40px;
+    margin-bottom: 0px;
+    font-size: 180%;
+}
+
+
+.dc_pt, .sale_prc{
+    margin-left: 10px;
+    font-weight: 900;
+}
+
+.dc_pt {
+    color: rgb(0, 199, 40);
+    font-weight: 900;
+}
+
+.cnsmr_prc {
+    font-size: 70%;
+    margin-left: 5px;
+    color: #c3c1c1;
+}
+
+/*-------- 리뷰 관련 ----------*/
+
+.stars_set{
+    display: inline-block;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.star_1_img {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url("../../img/star1.png");
+    background-size: 100%;
+    background-repeat: no-repeat; /*그림 반복 막기*/
+    vertical-align:sub;
+    margin-bottom: 2px;
+}
+
+.star_0_5_img {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url("../../img/star0_5.png");
+    background-size: 100%;
+    background-repeat: no-repeat; /*그림 반복 막기*/
+    vertical-align:sub;
+    margin-bottom: 2px;
+}
+
+.star_0_img {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url("../../img/star0.png");
+    background-size: 100%;
+    background-repeat: no-repeat; /*그림 반복 막기*/
+    vertical-align:sub;
+    margin-bottom: 2px;
+}
+
+.star_img.fst {padding-left: 2%;}
+
+.star_img .score .total_num {
+    vertical-align: middle;   /*옆 스팬글자랑 이미지랑 높이 맞추기*/
+}
+
+
+
+/*----------  수량 및 가격 시작 -----------*/
+
+.qty_button_set {
+    width :530px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 0;
+}
+
+.qty {
+    padding: 0px;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 23px;
+    width: 17px;
+    background-color: transparent;
+    font-size: 110%;
+    text-align: center;
+}
+
+.min_btn,
+.pls_btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: white;
+    font-size: 130%;
+    cursor: pointer;
+    border: 1px solid darkgrey;
+    display: inline-block;
+}
+
+.calculation_btn {
+    border-radius: 5px;
+    width: 60px;
+    height: 30px;
+    border: 1px solid silver;
+    background-color: white;
+    font-size: 100%;
+}
+
+#amount_by_qty_x_price {
+    margin-left: 20px;
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+
+/*--------옵션 있는 경우 (선택적)----------*/
+
+.hidden_option {
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 50px;
+}
+
+.select_box {
+    width : 520px;
+    height : 40px;
+    font-size : 17px;
+}
+
+/*----------옵션으로 생기는 표 (선택적)---------*/
+.make_li {
+    list-style: none;
+    padding: 0;
+}
+
+.make_li ul {
+    border-radius: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    list-style: none;
+    display: flex;
+    width: auto;
+    height: 30px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: none;
+
+    background-color: rgb(246, 250, 246);
+}
+
+
+.choice_opt {
+    list-style: none;
+    width: 200px;
+    flex: 1;
+}
+
+.price_opt {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.del_btn {
+    border: none;
+    font-size : 17px;
+    background-color: transparent;
+    color: #c2c2c2;
+}
+
+
+
+/*-------------최종 금액---------------*/
+
+.order_amount {
+    text-align: right;
+    margin-top : 50px;
+    margin-right : 50px;
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: -2px; /* 음수 값으로 글자 간격을 좁게 조절 */
+}
+
+.last_text {
+    font-size: 20px;
+    letter-spacing: 0px; /* 음수 값으로 글자 간격을 좁게 조절 */
+    margin-right: 10px;
+}
+
+/*--------------- 제출 버튼 -----------------*/
+
+.button_wrapper {
+    display: flex;
+    width: 550px;
+    height: 100px;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
+
+.button_text {
+    font-size: 20px;
+}
+
+.wishlist_btn, .addcart_btn, .order_btn {
+    width : 170px;
+    height : 70px;
+    margin-right: 10px;
+    margin-left: 0px;
+    margin-bottom: 3px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.wishlist_btn {
+    border: 1px solid #ffdcd8;
+    background-color: #faf6f6;
+}
+
+.addcart_btn {
+    border: none;
+    background-color: rgb(246, 250, 246);
+}
+
+.order_btn {
+    border: none;
+    background-color: rgb(246, 250, 246);
+}
+
+
+button.order_btn, button.addcart_btn {
+    border: 1px solid rgb(220 233 220);
+}
+
+
+
+.wishlist_btn i,
+.addcart_btn i,
+.order_btn i {
+    font-size: 20px;
+}
+
+.fas {
+    color: rgb(0, 199, 40);
+}
+
+.far {
+    color: rgb(32 131 90);
+}
+
+.fa-heart {
+    color: #ffdcd8; /* 기본 색상 */
+}
+
+/*------------호버-----------*/
+
+.wishlist_btn.hover .fa-heart {
+    color: #ff9284; /* 호버 상태 색상 */
+}
+
+.addcart_btn.hover .fa-shopping-cart {
+    color: #29ae77 /* 호버 상태 색상 */
+}
+
+.order_btn.hover .fa-credit-card {
+    color: #015633 /* 호버 상태 색상 */
+}
+
+/*----------------------네비게이션 시작-------------------------------*/
+
+.detail_navi_set {
+    margin-top: 50px;
+    width: 1100px;
+    height: 55px;
+    background-color:rgb(246, 250, 246);
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    list-style-type: none;
+    border-radius: 10px;
+}
+
+.detail_navi {
+    list-style-type: none;
+    flex-basis: 25%;
+    margin-top: 0px;
+    display: flex;
+    text-align: center;
+    position: relative;
+    font-weight: 600;
+}
+
+
+.detail_navi:hover {
+    opacity: 0.8;
+    cursor: pointer;
+
+}
+
+.detail_navi > a {
+    display: block;
+    text-align: center;
+    width: 100%;
+    padding-top: 6%;
+    text-decoration: none; /* 밑줄 없애기 */
+    color: inherit; /* 부모 요소의 글자색 상속 */
+    font-size: 18px;
+}
+
+.detail_navi_set li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    height: 220%;
+    width: 2px;
+    background-color:rgb(255 255 255); /* 구분선 색상 설정 */
+    transform: translateY(-50%);
+}
+
+.detail_img {
+    width: 1100px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+}
+
+/* -------------------------------------------------------------------------- */
+
+.middle_2 {
+    width: 1100px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+
+}
+
+.prod_detail_long_img {
+    border-radius: 10px;
+}
+
+/* ------------------------ 상품 관련 추가 정보 ------------------------------- */
+
+.middle_3 {
+    margin-top: 50px;
+    margin-bottom: 100px;
+    width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+.info_table {
+    width: auto;
+    border-collapse: collapse;
+}
+
+
+.prod_dscpt_set {
+    border-top: 1px solid #c6e2cd; /* 아래쪽 구분선 설정 */
+}
+
+.dscpt_table th,
+.dscpt_table td {
+    border-bottom: 1px solid #c6e2cd; /* 아래쪽 구분선 설정 */
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+.dscpt_table th {
+    width: 150px;
+    padding-right: 10px;
+    font-size: 18px;
+}
+
+.dscpt_table td {
+    width: 950px;
+    padding-left: 20px;
+    padding-right: 10px;
+    font-size: 18px;
+}
+
+
+/*-----------------------------------상품 후기 시작--------------------------------*/
+
+.hidden_navi_div {
+    height: 10px;
+}
+
+.review_head {
+    width: 1100px;
+    height: 30px;
+    display: flex;
+    font-size: 200%;
+    margin-top: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 50px;
+    justify-content: space-between;
+    border-bottom: 5px solid #c6e2cd;
+}
+
+
+.bottm_title {
+    width: 60%;
+    max-width: 1100px; /* 최대 너비를 1100px로 제한 */
+    margin-right: auto;
+    margin-bottom: 50px;
+    font-weight: bold;
+
+}
+
+.make_review_btn {
+    width: 12%;
+    height: 50px;
+    max-width: 1100px; /* 최대 너비를 1100px로 제한 */
+    margin: 0;
+    background-color: #c6e2cd;
+    border-radius: 10px;
+    border: 2px solid rgb(255, 255, 255);
+    color: white;
+    font-size: 70%;
+    margin-right: 20px;
+}
+
+/* -------------------------------------------------------------------------- */
+
+.rv_container {
+    width: 1100px; /* 원하는 가로 길이 */
+    margin-left: auto;
+    margin-right: auto;
+    /* border-top: 1px solid rgb(31, 167, 115); */
+    border-bottom: 1px solid rgb(194 216 197);
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.rv_set {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-left: 20px;
+    padding-top: 15px;
+}
+
+.rv_wrt, .rv_wrt_dt, .rv_star, .rv_kword {
+    width: auto;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 20px;
+    display: inline-flex;
+    align-items: center;
+}
+
+
+.rv_kword {
+    border: 1px solid black;
+    border-radius: 5px;
+    line-height: 30px;
+    text-align: center;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.rv_title {
+    width: 100%;
+    display: block;
+    padding-top: 15px;
+    padding-left: 10px;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+.rv_stmt {
+    width: 80%;
+    height: auto;
+    padding-top: 15px;
+    padding-left: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.rv_img {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+
+/*---------------이미지변환 관련---------------*/
+.rv_img img {
+    transition: transform 0.6s ease;
+}
+
+.rv_img:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.rv_img.active img {
+    transform: scale(1.2);
+    width: 500px;
+    height: 500px;
+}
+.rv_container {
+    transition: height 0.6s ease;
+}
+
+/*--------------------------------------상품 문의 시작-------------------------------------------------*/
+
+
+.inquiry_head {
+    width: 1100px;
+    height: 30px;
+    display: flex;
+    font-size: 200%;
+    margin-top: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 50px;
+    justify-content: space-between;
+
+}
+
+
+.bottm_title {
+    width: 70%;
+    max-width: 1100px; /* 최대 너비를 1100px로 제한 */
+    margin-right: auto;
+}
+
+.make_inquiry_btn {
+    width: 12%;
+    height: 50px;
+    max-width: 1100px; /* 최대 너비를 1100px로 제한 */
+    margin: 0;
+    background-color: #c6e2cd;
+    border-radius: 10px;
+    border: 2px solid rgb(255, 255, 255);
+    color: white;
+    font-size: 70%;
+    margin-right: 20px;
+}
+
+/* -------------------------------------------------------------------------- */
+
+.inquiry_container {
+    width: 1100px; /* 원하는 가로 길이 */
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+
+.header {
+    border-top: 5px solid #c6e2cd;
+    border-bottom: 5px solid #c6e2cd;
+    height: 50px;
+}
+
+
+.inquiry_title {
+    width:61%;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+
+.inquiry_wrt {
+    width:13%;
+}
+.inquiry_wrt_dt {
+    text-align: center;
+}
+.inquiry_stus {
+    width:13%;
+}
+.inquiry_title, .answer {
+    padding-left: 20px;
+    border-bottom: 1px solid #c6e2cd;;
+}
+
+.inquiry_title .inquiry_wrt, .inquiry_wrt_dt, .inquiry_stus, .inquiry_wrt{
+    text-align: center;
+    height: 50px;
+    border-bottom: 1px solid #c6e2cd;;
+}
+
+.answer {
+    height: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+
+.inquiry_title:hover {
+    background-color: rgb(216, 242, 202);
+}
+
+.accordion:after { /* .accordion 클래스 태그의 뒤에 위치하는 공간을 선택한다. */
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right; /* 오른쪽에 붙인다. */
+    margin-left: 5px;
+}
+
+.accordion {
+    background-color: white;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 61%; /* button은 display가 inline-block이라 width 지정 가능 / 부모의 크기의 100% -> body? */
+    border: none; /* border 없앰 */
+    border-bottom: 1px solid gainsboro;
+    text-align: left; /* button 내용 왼쪽 정렬 */
+    outline: none; /* 요소의 테두리인 outline제거.( border는 자리를 차지하지만. outline은 자리를 처지 하지 않는다는 차이 있음)*/
+    font-size: 100%;
+    transition: 0.4s; /* 애니메이션효과(전환효과) 값. 수정해보며 변화를 느껴보기 */
+}
+
+
+.answer {
+    max-height: 0; /* panel의 최대 높이를 0으로 제한한다.  */
+    overflow: hidden; /* 부모 요소를 벗어나는 건 숨긴다...???? panel의 부모 = body */
+    /* max-height가 변경될 때 0.2초 동안 진행된다. ease-out - 애니메이션이 빠르게 시작되고 느리게 종료되도록 설정한다. */
+    transition: max-height 0.2s ease-out;
+}
+
+
+.go_up > a {
+    text-decoration: none; /* 밑줄 없애기 */
+    color: inherit; /* 부모 요소의 글자색 상속 */
+}
+
+.make_review_btn > a, .make_inquiry_btn > a {
+    text-decoration: none; /* 밑줄 없애기 */
+    color: inherit; /* 부모 요소의 글자색 상속 */
+}
+
