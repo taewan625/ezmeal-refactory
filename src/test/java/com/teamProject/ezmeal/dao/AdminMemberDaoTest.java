@@ -1,6 +1,6 @@
 package com.teamProject.ezmeal.dao;
 
-import com.teamProject.ezmeal.domain.MemberDto;
+import com.teamProject.ezmeal.dao.admin.AdminMemberDao;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="com.teamProject.ezmeal.dao.NoticeDao" %><%--
+<%@ page import="com.teamProject.ezmeal.dao.client.board.NoticeDao" %><%--
   Created by IntelliJ IDEA.
   User: lee nakyeong
   Date: 2023-07-28

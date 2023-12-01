@@ -1,6 +1,7 @@
 package com.teamProject.ezmeal.service;
 
 import com.teamProject.ezmeal.domain.joinDomain.CartJoinProductDto;
+import com.teamProject.ezmeal.service.client.order.CartProductService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

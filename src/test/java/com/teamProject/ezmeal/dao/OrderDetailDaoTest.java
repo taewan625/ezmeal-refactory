@@ -1,6 +1,7 @@
 package com.teamProject.ezmeal.dao;
 
-import com.teamProject.ezmeal.domain.OrderDetailDto;
+import com.teamProject.ezmeal.dao.client.order.OrderDetailDao;
+import com.teamProject.ezmeal.domain.client.order.OrderDetailDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

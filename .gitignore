@@ -46,3 +46,4 @@ out/
 .vscode/
 /.idea/!/src/main/resources/config.properties
 /src/main/resources/config.properties
+.DS_Store

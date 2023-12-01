@@ -1,9 +1,9 @@
 package com.teamProject.ezmeal.service;
 
-import com.teamProject.ezmeal.dao.OrderMasterDao;
-import com.teamProject.ezmeal.dao.PaymentMasterDao;
-import com.teamProject.ezmeal.domain.OrderMasterDto;
-import com.teamProject.ezmeal.domain.PaymentMasterDto;
+import com.teamProject.ezmeal.dao.client.order.OrderMasterDao;
+import com.teamProject.ezmeal.dao.client.order.PaymentMasterDao;
+import com.teamProject.ezmeal.domain.client.order.OrderMasterDto;
+import com.teamProject.ezmeal.domain.client.order.PaymentMasterDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

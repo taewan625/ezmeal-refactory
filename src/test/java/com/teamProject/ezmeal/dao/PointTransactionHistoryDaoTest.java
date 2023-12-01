@@ -1,6 +1,7 @@
 package com.teamProject.ezmeal.dao;
 
-import com.teamProject.ezmeal.domain.PointTransactionHistoryDto;
+import com.teamProject.ezmeal.dao.client.user.PointTransactionHistoryDao;
+import com.teamProject.ezmeal.domain.client.user.PointTransactionHistoryDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,8 @@
 package com.teamProject.ezmeal.dao;
 
-import com.teamProject.ezmeal.domain.MemberDto;
-import com.teamProject.ezmeal.service.LoginService;
+import com.teamProject.ezmeal.dao.client.user.MemberDao;
+import com.teamProject.ezmeal.domain.client.user.MemberDto;
+import com.teamProject.ezmeal.service.client.user.LoginService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

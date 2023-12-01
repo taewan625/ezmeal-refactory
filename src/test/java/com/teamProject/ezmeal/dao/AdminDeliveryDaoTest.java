@@ -1,5 +1,6 @@
 package com.teamProject.ezmeal.dao;
 
+import com.teamProject.ezmeal.dao.admin.AdminDeliveryDao;
 import com.teamProject.ezmeal.domain.joinDomain.AdminOrderOrderDto;
 import com.teamProject.ezmeal.domain.restAPIDomain.BundleData;
 import com.teamProject.ezmeal.domain.restAPIDomain.InvoiceDeliveryFeeInfo;
@@ -13,8 +14,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/root-context.xml"})

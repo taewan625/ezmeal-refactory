@@ -1,6 +1,7 @@
 package com.teamProject.ezmeal.dao;
 
-import com.teamProject.ezmeal.domain.ProductInventoryDto;
+import com.teamProject.ezmeal.dao.client.product.ProductInventoryDao;
+import com.teamProject.ezmeal.domain.client.product.ProductInventoryDto;
 import com.teamProject.ezmeal.domain.restAPIDomain.InventoryData;
 import org.junit.Test;
 import org.junit.runner.RunWith;

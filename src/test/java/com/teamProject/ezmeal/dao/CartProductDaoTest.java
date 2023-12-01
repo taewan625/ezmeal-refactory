@@ -1,7 +1,8 @@
 package com.teamProject.ezmeal.dao;
 
+import com.teamProject.ezmeal.dao.client.order.CartProductDao;
 import com.teamProject.ezmeal.domain.joinDomain.CartJoinProductDto;
-import com.teamProject.ezmeal.domain.CartProductDto;
+import com.teamProject.ezmeal.domain.client.order.CartProductDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,7 @@
 package com.teamProject.ezmeal.dao;
 
-import com.teamProject.ezmeal.domain.DeliveryAddressDto;
+import com.teamProject.ezmeal.dao.client.order.DeliveryAddressDao;
+import com.teamProject.ezmeal.domain.client.order.DeliveryAddressDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

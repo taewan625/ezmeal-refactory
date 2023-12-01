@@ -1,5 +1,6 @@
 package com.teamProject.ezmeal.service;
 
+import com.teamProject.ezmeal.service.client.user.PointTransactionHistoryService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

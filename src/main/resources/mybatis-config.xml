@@ -4,53 +4,53 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias alias="SearchCondition" type="com.teamProject.ezmeal.domain.SearchCondition" />
+        <typeAlias alias="SearchCondition" type="com.teamProject.ezmeal.domain.client.product.SearchCondition" />
 <!--        cart , cartProduct 추가 필요-->
-        <typeAlias alias="CartDto" type="com.teamProject.ezmeal.domain.CartDto"/>
-        <typeAlias alias="CartProductDto" type="com.teamProject.ezmeal.domain.CartProductDto"/>
+        <typeAlias alias="CartDto" type="com.teamProject.ezmeal.domain.client.order.CartDto"/>
+        <typeAlias alias="CartProductDto" type="com.teamProject.ezmeal.domain.client.order.CartProductDto"/>
         <typeAlias alias="CartJoinProductDto" type="com.teamProject.ezmeal.domain.joinDomain.CartJoinProductDto"/>
-        <typeAlias alias="DeliveryAddressDto" type="com.teamProject.ezmeal.domain.DeliveryAddressDto"/>
-        <typeAlias alias="MemberDto" type="com.teamProject.ezmeal.domain.MemberDto"/>
+        <typeAlias alias="DeliveryAddressDto" type="com.teamProject.ezmeal.domain.client.order.DeliveryAddressDto"/>
+        <typeAlias alias="MemberDto" type="com.teamProject.ezmeal.domain.client.user.MemberDto"/>
 <!--상품 , 상품이미지 , 상품할인, 상품옵션, 상품후기, 상품재고, 찜한상품, + 카테고리, 거래처, 상품상태코드 + 리뷰 평점 개수-->
-        <typeAlias alias="ProductDto" type="com.teamProject.ezmeal.domain.ProductDto"/>
-        <typeAlias alias="ProductImgDto" type="com.teamProject.ezmeal.domain.ProductImgDto"/>
-        <typeAlias alias="ProductDiscountDto" type="com.teamProject.ezmeal.domain.ProductDiscountDto"/>
-        <typeAlias alias="ProductOptionDto" type="com.teamProject.ezmeal.domain.ProductOptionDto"/>
-        <typeAlias alias="ProductReviewDto" type="com.teamProject.ezmeal.domain.ProductReviewDto"/>
-        <typeAlias alias="ProductInventoryDto" type="com.teamProject.ezmeal.domain.ProductInventoryDto"/>
-        <typeAlias alias="WishListDto" type="com.teamProject.ezmeal.domain.WishListDto"/>
-        <typeAlias alias="ProductCategoryDto" type="com.teamProject.ezmeal.domain.ProductCategoryDto"/>
-        <typeAlias alias="CustDto" type="com.teamProject.ezmeal.domain.CustDto"/>
-        <typeAlias alias="ProductStatusDto" type="com.teamProject.ezmeal.domain.ProductStatusDto"/>
-        <typeAlias alias="ProductReviewTotalDto" type="com.teamProject.ezmeal.domain.ProductReviewTotalDto"/>
+        <typeAlias alias="ProductDto" type="com.teamProject.ezmeal.domain.client.product.ProductDto"/>
+        <typeAlias alias="ProductImgDto" type="com.teamProject.ezmeal.domain.client.product.ProductImgDto"/>
+        <typeAlias alias="ProductDiscountDto" type="com.teamProject.ezmeal.domain.client.product.ProductDiscountDto"/>
+        <typeAlias alias="ProductOptionDto" type="com.teamProject.ezmeal.domain.client.product.ProductOptionDto"/>
+        <typeAlias alias="ProductReviewDto" type="com.teamProject.ezmeal.domain.client.product.ProductReviewDto"/>
+        <typeAlias alias="ProductInventoryDto" type="com.teamProject.ezmeal.domain.client.product.ProductInventoryDto"/>
+        <typeAlias alias="WishListDto" type="com.teamProject.ezmeal.domain.client.order.WishListDto"/>
+        <typeAlias alias="ProductCategoryDto" type="com.teamProject.ezmeal.domain.client.product.ProductCategoryDto"/>
+        <typeAlias alias="CustDto" type="com.teamProject.ezmeal.domain.client.user.CustDto"/>
+        <typeAlias alias="ProductStatusDto" type="com.teamProject.ezmeal.domain.client.product.ProductStatusDto"/>
+        <typeAlias alias="ProductReviewTotalDto" type="com.teamProject.ezmeal.domain.client.product.ProductReviewTotalDto"/>
 
 <!--회원 등급, 적립금-->
-        <typeAlias alias="MemberGradeDto" type="com.teamProject.ezmeal.domain.MemberGradeDto"/>
-        <typeAlias alias="MemberGradeBenefitDto" type="com.teamProject.ezmeal.domain.MemberGradeBenefitDto"/>
-        <typeAlias alias="PointTransactionHistoryDto" type="com.teamProject.ezmeal.domain.PointTransactionHistoryDto"/>
-        <typeAlias alias="PointTransactionCodeDto" type="com.teamProject.ezmeal.domain.PointTransactionCodeDto"/>
+        <typeAlias alias="MemberGradeDto" type="com.teamProject.ezmeal.domain.client.user.MemberGradeDto"/>
+        <typeAlias alias="MemberGradeBenefitDto" type="com.teamProject.ezmeal.domain.client.user.MemberGradeBenefitDto"/>
+        <typeAlias alias="PointTransactionHistoryDto" type="com.teamProject.ezmeal.domain.client.user.PointTransactionHistoryDto"/>
+        <typeAlias alias="PointTransactionCodeDto" type="com.teamProject.ezmeal.domain.client.user.PointTransactionCodeDto"/>
 <!--회원 쿠폰, 쿠폰 발행 -->
-        <typeAlias alias="CouponIssueDto" type="com.teamProject.ezmeal.domain.CouponIssueDto"/>
-        <typeAlias alias="MemberCouponDto" type="com.teamProject.ezmeal.domain.MemberCouponDto"/>
+        <typeAlias alias="CouponIssueDto" type="com.teamProject.ezmeal.domain.client.user.CouponIssueDto"/>
+        <typeAlias alias="MemberCouponDto" type="com.teamProject.ezmeal.domain.client.user.MemberCouponDto"/>
 <!--join dto-->
         <typeAlias alias="CouponJoinDto" type="com.teamProject.ezmeal.domain.joinDomain.CouponJoinDto"/>
 <!-- 주문/결제 dto -->
-        <typeAlias alias="OrderMasterDto" type="com.teamProject.ezmeal.domain.OrderMasterDto"/>
-        <typeAlias alias="PaymentMasterDto" type="com.teamProject.ezmeal.domain.PaymentMasterDto"/>
-        <typeAlias alias="OrderStatusHistoryDto" type="com.teamProject.ezmeal.domain.OrderStatusHistoryDto"/>
-        <typeAlias alias="OrderPaymentDto" type="com.teamProject.ezmeal.domain.OrderPaymentDto"/>
-        <typeAlias alias="OrderDetailDto" type="com.teamProject.ezmeal.domain.OrderDetailDto"/>
-        <typeAlias alias="DeliveryMasterDto" type="com.teamProject.ezmeal.domain.DeliveryMasterDto"/>
+        <typeAlias alias="OrderMasterDto" type="com.teamProject.ezmeal.domain.client.order.OrderMasterDto"/>
+        <typeAlias alias="PaymentMasterDto" type="com.teamProject.ezmeal.domain.client.order.PaymentMasterDto"/>
+        <typeAlias alias="OrderStatusHistoryDto" type="com.teamProject.ezmeal.domain.client.order.OrderStatusHistoryDto"/>
+        <typeAlias alias="OrderPaymentDto" type="com.teamProject.ezmeal.domain.client.order.OrderPaymentDto"/>
+        <typeAlias alias="OrderDetailDto" type="com.teamProject.ezmeal.domain.client.order.OrderDetailDto"/>
+        <typeAlias alias="DeliveryMasterDto" type="com.teamProject.ezmeal.domain.client.order.DeliveryMasterDto"/>
 <!-- 주문내역 dto-->
         <typeAlias alias="OrderPaymentJoinDto" type="com.teamProject.ezmeal.domain.joinDomain.OrderPaymentJoinDto"/>
 
         <!--  관리자  -->
-        <typeAlias alias="AdminMemberDto" type="com.teamProject.ezmeal.domain.AdminMemberDto"/>
+        <typeAlias alias="AdminMemberDto" type="com.teamProject.ezmeal.domain.admin.AdminMemberDto"/>
 
 
         <!--공지사항-->
-        <typeAlias alias="noticeDto" type="com.teamProject.ezmeal.domain.NoticeDto"></typeAlias>
-        <typeAlias alias="PageHandler" type="com.teamProject.ezmeal.domain.PageHandler"></typeAlias>
+        <typeAlias alias="noticeDto" type="com.teamProject.ezmeal.domain.client.board.NoticeDto"></typeAlias>
+        <typeAlias alias="PageHandler" type="com.teamProject.ezmeal.domain.common.PageHandler"></typeAlias>
 
 
 

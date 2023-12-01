@@ -1,5 +1,5 @@
-<%@ page import="com.teamProject.ezmeal.domain.MemberDto" %>
-<%@ page import="com.teamProject.ezmeal.service.MemberService" %>
+<%@ page import="com.teamProject.ezmeal.domain.client.user.MemberDto" %>
+<%@ page import="com.teamProject.ezmeal.service.client.user.MemberService" %>
 <%@ page import="javax.servlet.http.HttpSession" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>

@@ -1,7 +1,7 @@
 package com.teamProject.ezmeal.dao;
 
-import com.teamProject.ezmeal.domain.NoticeDto;
-import org.junit.Assert;
+import com.teamProject.ezmeal.dao.client.board.NoticeDao;
+import com.teamProject.ezmeal.domain.client.board.NoticeDto;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -9,13 +9,9 @@ import java.time.LocalDateTime;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/root-context.xml"})

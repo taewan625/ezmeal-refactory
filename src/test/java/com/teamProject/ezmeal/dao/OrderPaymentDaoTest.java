@@ -1,5 +1,6 @@
 package com.teamProject.ezmeal.dao;
 
+import com.teamProject.ezmeal.dao.client.order.OrderPaymentDao;
 import com.teamProject.ezmeal.domain.joinDomain.OrderPaymentJoinDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;

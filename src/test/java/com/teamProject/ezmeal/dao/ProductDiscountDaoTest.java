@@ -1,7 +1,7 @@
 package com.teamProject.ezmeal.dao;
 
-import com.teamProject.ezmeal.domain.ProductDiscountDto;
-import com.teamProject.ezmeal.domain.ProductOptionDto;
+import com.teamProject.ezmeal.dao.client.product.ProductDiscountDao;
+import com.teamProject.ezmeal.domain.client.product.ProductDiscountDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +10,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Map;
 
 import static org.junit.Assert.assertTrue;
 

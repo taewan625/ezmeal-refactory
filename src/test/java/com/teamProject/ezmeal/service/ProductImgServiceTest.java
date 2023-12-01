@@ -1,6 +1,7 @@
 package com.teamProject.ezmeal.service;
 
-import com.teamProject.ezmeal.domain.ProductImgDto;
+import com.teamProject.ezmeal.domain.client.product.ProductImgDto;
+import com.teamProject.ezmeal.service.client.product.ProductImgService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

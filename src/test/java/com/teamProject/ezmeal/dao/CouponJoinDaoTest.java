@@ -1,5 +1,6 @@
 package com.teamProject.ezmeal.dao;
 
+import com.teamProject.ezmeal.dao.client.user.CouponJoinDao;
 import com.teamProject.ezmeal.domain.joinDomain.CouponJoinDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;

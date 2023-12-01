@@ -1,14 +1,12 @@
 package com.teamProject.ezmeal.dao;
 
-import com.teamProject.ezmeal.domain.OrderMasterDto;
+import com.teamProject.ezmeal.dao.client.order.OrderMasterDao;
+import com.teamProject.ezmeal.domain.client.order.OrderMasterDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import static org.junit.Assert.*;
 

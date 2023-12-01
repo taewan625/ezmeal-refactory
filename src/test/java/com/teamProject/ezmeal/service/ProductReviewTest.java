@@ -1,6 +1,6 @@
 package com.teamProject.ezmeal.service;
 
-import com.teamProject.ezmeal.domain.ProductOptionDto;
+import com.teamProject.ezmeal.service.client.product.ProductReviewService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Map;
 
 @RunWith(SpringJUnit4ClassRunner.class)

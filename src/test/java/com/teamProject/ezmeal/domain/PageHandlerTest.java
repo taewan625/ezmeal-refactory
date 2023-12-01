@@ -1,5 +1,6 @@
 package com.teamProject.ezmeal.domain;
 
+import com.teamProject.ezmeal.domain.common.PageHandler;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

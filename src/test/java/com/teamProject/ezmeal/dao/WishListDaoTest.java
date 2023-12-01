@@ -1,6 +1,7 @@
 package com.teamProject.ezmeal.dao;
 
-import com.teamProject.ezmeal.domain.WishListDto;
+import com.teamProject.ezmeal.dao.client.order.WishListDao;
+import com.teamProject.ezmeal.domain.client.order.WishListDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 
 import static org.junit.Assert.*;
 
