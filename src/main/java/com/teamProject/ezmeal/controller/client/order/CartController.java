@@ -7,6 +7,7 @@ import com.teamProject.ezmeal.service.client.order.CartProductService;
 import com.teamProject.ezmeal.service.client.order.CartService;
 import com.teamProject.ezmeal.service.client.order.DeliveryAddressService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.*;
 
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/cart")
@@ -24,22 +26,19 @@ public class CartController {
     private final CartService cartService;
     private final CartProductService cartProductService;
     private final DeliveryAddressService deliveryAddressService;
-    private static final String[] TYPE_NAME = {"냉동", "냉장", "상온"};
-    private static final String[] productName = {"productIce", "productCold", "productOutside"};
+    private static final List<String> TYPE_NAME = List.of("냉동", "냉장", "상온");
+    private static final List<String> productName = List.of("productIce", "productCold", "productOutside");
 
     @GetMapping
     public String getGeneral(@SessionAttribute(required = false) Long memberId, Model model) {
         // TODO 회원 session 유무로 비회원, 회원 장바구니 접근 logic 수행
-        // 회원 장바구니 가져오기
-        Long cartSeq = cartService.getCartSeq(memberId);
-        // 품절 상품 업데이트
-        int updatedCnt = cartProductService.checkSoldOut(cartSeq);
-        // 기본 배송지
+        Long cartSeq = cartService.getCartSeq(memberId); // 회원 장바구니 가져오기
+        cartProductService.checkSoldOut(cartSeq); // 품절 상품 업데이트
+
         // todo 선택 배송지 존재시, 선택배송지가 되도록 logic 작성 필요 - selectAddress
-        DeliveryAddressDto defaultAddress = deliveryAddressService.getDefaultAddress(memberId);
-        // 상품 list
-        List<CartJoinProductDto> productsList = cartProductService.getProductList(cartSeq);
-        int productCount = productsList.size();
+        DeliveryAddressDto defaultAddress = deliveryAddressService.getDefaultAddress(memberId); // 기본 배송지
+
+        List<CartJoinProductDto> productsList = cartProductService.getProductList(cartSeq); // 상품 list
 
         // 상품 목록 type별로 분리하기
         List<CartJoinProductDto> iceList = new ArrayList<>();
@@ -47,16 +46,16 @@ public class CartController {
         List<CartJoinProductDto> outSideList = new ArrayList<>();
 
         for (CartJoinProductDto product : productsList) {
-            System.out.println("product = " + product);
-            if (product.getTyp().equals(TYPE_NAME[0])) iceList.add(product);
-            else if (product.getTyp().equals(TYPE_NAME[1])) coldList.add(product);
-            else if (product.getTyp().equals(TYPE_NAME[2])) outSideList.add(product);
+            if (product.getTyp().equals(TYPE_NAME.get(0))) iceList.add(product);
+            else if (product.getTyp().equals(TYPE_NAME.get(1))) coldList.add(product);
+            else if (product.getTyp().equals(TYPE_NAME.get(2))) outSideList.add(product);
         }
-        model.addAttribute(productName[0], (iceList.size() != 0) ? iceList : null);
-        model.addAttribute(productName[1], (coldList.size() != 0) ? coldList : null);
-        model.addAttribute(productName[2], (outSideList.size() != 0) ? outSideList : null);
 
-        model.addAttribute("count", productCount);
+        model.addAttribute(productName.get(0), (iceList.size() != 0) ? iceList : null);
+        model.addAttribute(productName.get(1), (coldList.size() != 0) ? coldList : null);
+        model.addAttribute(productName.get(2), (outSideList.size() != 0) ? outSideList : null);
+
+        model.addAttribute("count", productsList.size());
         model.addAttribute("defaultAddress", defaultAddress);
 
         return "cart";
@@ -66,44 +65,43 @@ public class CartController {
     @PatchMapping("/delete")
     @ResponseBody
     public String removeProduct(@SessionAttribute Long memberId, @RequestBody List<Long> cartProdSeqList) {
-//        // 예외1. 회원 세션 만료  TODO 장바구니로 이동 필요
+        // 예외1. 회원 세션 만료  TODO 장바구니로 이동 필요
         if (memberId == null) return "no_memberId";
-
         // 예외2. service에서 검증 돌림
         Long cartSeq = cartService.getCartSeq(memberId);
         int validationResult = cartProductService.validateCartProduct(cartSeq, cartProdSeqList);
-
         // 예외3. 잘못된 상품으로 접근
         if (validationResult == 0) return "wrong product";
 
         cartProductService.removeCartProduct(cartProdSeqList);
         // TODO  2. 해당 jsp를 변수에 담이서 return한다. 3. js에서 html을 갈아엎는다.
-//        Map<String, List<CartJoinProductDto>> productsMap = cartProductService.getProducts(cartSeq);
+        // Map<String, List<CartJoinProductDto>> productsMap = cartProductService.getProducts(cartSeq);
         return "cartProductModule";
     }
 
     @PatchMapping("/select")
     @ResponseBody
     public String updateOrderProduct(@SessionAttribute Long memberId, @RequestBody List<Long> cartProdSeqList) {
-        System.out.println("cartProdSeqList = " + cartProdSeqList);
+        log.info("cartProdSeqList = {}", cartProdSeqList);
+
         // TODO cartProdSeqList 만약 값이 비어있을 경우, return
         Long cartSeq = cartService.getCartSeq(memberId);
-
         int updateNum = cartProductService.updateOrderProduct(cartSeq, cartProdSeqList);
-        if (updateNum > 0) return "success";
-        else return "false";
+
+        return (updateNum > 0) ? "success" : "false";
     }
 
     @PatchMapping("/update")
     @ResponseBody
     public String updateProductQuantity(@RequestBody List<Long> quantityList) {
-//        System.out.println("cartProdSeqList = " + quantityList); // [0]: cartProdSeq, [1]: quantity
         Map<String, Long> quantityMap = new HashMap<>();
         quantityMap.put("cartProdSeq", quantityList.get(0));
         quantityMap.put("quantity", quantityList.get(1));
 
         String result = cartProductService.changeQuantity(quantityMap);
-        if (result.equals("fail")) return "fail";
+        if (result.equals("fail")) {
+            return "fail";
+        }
         return result;
     }
 
@@ -137,32 +135,19 @@ public class CartController {
     @PostMapping("/inventoryValidation")
     @ResponseBody
     public String checkQuantity(@RequestBody List<Long> cartProdSeqList) {
-        List<List<Number>> lists = cartProductService.checkOrderListOverInventory(cartProdSeqList);
-        return lists + "";
+        return String.valueOf(cartProductService.checkOrderListOverInventory(cartProdSeqList));
     }
 
 
     /*상품 목록, 상품 상세에서 장바구니에 상품 담기  */
     @PostMapping("/add")
-    public ResponseEntity<String> addCart(@RequestBody CartProductDto cartProductDto, @SessionAttribute Long memberId, RedirectAttributes reAtt) {
-
-        System.out.println("---------컨트롤러 진입---일반상품 장바구니 담기--------");
-        System.out.println("memberId: "+memberId);
-        System.out.println("cartProductDto: "+cartProductDto.toString());
-        System.out.println("상품정보: "+cartProductDto.getProd_cd());
-        System.out.println("상품정보: "+cartProductDto.getTyp());
-        System.out.println("상품정보: "+cartProductDto.getQty());
-        System.out.println("상품정보: "+cartProductDto.getOpt_seq());
-
-//        memberId = 1007L;
-        System.out.println("memberId: "+memberId);
-
-
+    public ResponseEntity<String> addCart(@RequestBody CartProductDto cartProductDto,
+                                          @SessionAttribute Long memberId,
+                                          RedirectAttributes reAtt) {
         // mbr_id 값 체크
-        if(memberId == null) {
-            System.out.println("[컨트롤러]mbr_id 없음");
+        if (memberId == null) {
             /* 현재 카트에 추가하려는 상품및수량 챙겨서 로그인 페이지로 보내기.*/
-            reAtt.addAttribute("msg","noLoginMember_From_CartAdd");
+            reAtt.addAttribute("msg", "noLoginMember_From_CartAdd");
             /* 수정해야할 부분 */
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("비로그인 회원 장바구니 추가. 로그인으로 보내버려");
         }
@@ -170,34 +155,28 @@ public class CartController {
         boolean addCartResult = cartProductService.addProductToCart(memberId, cartProductDto);
 
         /*insert 실패했을 때*/
-        if(addCartResult){
-            System.out.println("[컨트롤러] insert 성공");
+        if (addCartResult) {
+            log.info("상품목록 추가 성공");
             return ResponseEntity.ok("Success message");
         } else {
-            System.out.println("[컨트롤러] insert 실패");
+            log.info("상품목록 추가 실패");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("insert 실패");
         }
 
     }
 
     @PostMapping("/adds")
-    public ResponseEntity<String> addsCart(@RequestBody CartProductDto[] cartProductDtos, @SessionAttribute Long memberId, RedirectAttributes reAtt) {
-
+    public ResponseEntity<String> addsCart(@RequestBody CartProductDto[] cartProductDtos,
+                                           @SessionAttribute Long memberId,
+                                           RedirectAttributes reAtt) {
         System.out.println("---------컨트롤러 진입---옵션상품 장바구니 담기--------");
-        System.out.println("memberId: "+memberId);
-        for(CartProductDto dto : cartProductDtos){
-            System.out.println("dto: "+dto.toString());
+        for (CartProductDto dto : cartProductDtos) {
+            System.out.println("dto: " + dto.toString());
         }
-
-//        memberId = 1007L;
-        System.out.println("memberId: "+memberId);
-
-
         // mbr_id 값 체크
-        if(memberId == null) {
-            System.out.println("[컨트롤러]mbr_id 없음");
+        if (memberId == null) {
             /* 현재 카트에 추가하려는 상품및수량 챙겨서 로그인 페이지로 보내기.*/
-            reAtt.addAttribute("msg","noLoginMember_From_CartAdd");
+            reAtt.addAttribute("msg", "noLoginMember_From_CartAdd");
             /* 수정해야할 부분 */
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("비로그인 회원 장바구니 추가. 로그인으로 보내버려");
         }
@@ -205,15 +184,10 @@ public class CartController {
         boolean addCartResult = cartProductService.addProductListToCart(memberId, cartProductDtos);
 
         /*insert 실패했을 때*/
-        if(addCartResult){
-            System.out.println("[컨트롤러] insert 성공");
+        if (addCartResult) {
             return ResponseEntity.ok("Success message");
         } else {
-            System.out.println("[컨트롤러] insert 실패");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("insert 실패");
         }
-
     }
-
-
 }
